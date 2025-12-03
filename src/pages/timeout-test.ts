@@ -1,4 +1,3 @@
-// API route to test execution timeout on Launch
 // This route intentionally waits for 60 seconds to exceed the 30-second timeout limit
 
 export async function GET() {
