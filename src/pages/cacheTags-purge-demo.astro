@@ -9,7 +9,7 @@ Astro.response.headers.set(
   "public, s-maxage=60, stale-while-revalidate=30"
 );
 
-Astro.response.headers.set("x-cache-tags", "cachetest");
+Astro.response.headers.set("Cache-Tag", "cachetest");
 ---
 
 <Layout>
