@@ -56,17 +56,20 @@ This repository showcases:
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd astro-ssr-test
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -85,7 +88,6 @@ npm run dev
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-
 ## ⚙️ Configuration
 
 The project is configured for server-side rendering with the Node.js adapter:
@@ -100,12 +102,14 @@ export default defineConfig({
   integrations: [react()],
 });
 ```
+
 ### Build for Production
 
 ```bash
 npm run build
 npm start
 ```
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/contentstack-launch-examples/contentstack-nuxt-example-starter/blob/main/LICENSE) file for details.
