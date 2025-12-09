@@ -1,0 +1,61 @@
+---
+// Test SSR page WITHOUT any explicit cache headers
+// This will help verify if SSR pages are cached by default on Launch
+
+import Layout from '../layouts/Layout.astro';
+
+const currentTime = new Date().toLocaleString();
+const randomNumber = Math.floor(Math.random() * 1000);
+
+// Intentionally NOT setting any cache headers to test default behavior
+---
+
+<Layout>
+  <section 
+    style="
+      padding: 3rem 2rem; 
+      font-family: system-ui, sans-serif; 
+      max-width: 800px; 
+      margin: auto; 
+      text-align: center;
+    "
+  >
+    <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">🧪 SSR Test (No Cache Headers)</h1>
+    <p style="color: #247cf0; margin-bottom: 2rem; font-size: 1.1rem;">
+      This page has <strong>NO explicit cache headers</strong> to test default caching behavior.
+    </p>
+
+    <div 
+      style="
+        background: linear-gradient(135deg, #7dd3fc, #818cf8, #c084fc); 
+        padding: 2rem; 
+        border-radius: 16px; 
+        color: white; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      "
+    >
+      <h2 style="margin-bottom: 1rem; font-size: 1.5rem;">⚡ Server Data</h2>
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 1.1rem;">
+        <li style="margin-bottom: 0.75rem;">
+          <strong>🕒 Current server time:</strong><br /> {currentTime}
+        </li>
+        <li>
+          <strong>🎲 Random number:</strong><br /> {randomNumber}
+        </li>
+      </ul>
+      <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">
+        If this page is cached, timestamp and random number should remain the same on subsequent requests.
+      </p>
+    </div>
+
+    <p style="margin-top: 2rem;">
+      <a 
+        href="/" 
+        style="color: #fbbf24; text-decoration: none; font-weight: 600;"
+      >
+        ← Back to Home
+      </a>
+    </p>
+  </section>
+</Layout>
+
