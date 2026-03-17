@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+// Edge function redirects /test1 → /test2; this page is fallback if request bypasses edge
+---
+
+<Layout>
+	<section
+		style="
+			padding: 3rem 2rem;
+			font-family: system-ui, sans-serif;
+			max-width: 600px;
+			margin: auto;
+			text-align: center;
+		"
+	>
+		<h1 style="font-size: 2rem; margin-bottom: 0.5rem;">Test 1 (source)</h1>
+		<p style="color: #4b5563; margin-bottom: 2rem;">
+			You should be redirected to Test 2 by the edge function. If you see this, the redirect did not run.
+		</p>
+		<a
+			href="/test2"
+			style="
+				display: inline-block;
+				padding: 12px 24px;
+				background: #3245ff;
+				color: white;
+				text-decoration: none;
+				border-radius: 10px;
+				font-weight: bold;
+			"
+		>
+			Go to Test 2
+		</a>
+	</section>
+</Layout>

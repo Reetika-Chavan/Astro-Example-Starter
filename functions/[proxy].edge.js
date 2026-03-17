@@ -1,6 +1,16 @@
 export default async function handler(request, context) {
   const url = new URL(request.url);
 
+  // Edge redirect: test1 → test2 (308 permanent)
+  if (url.pathname === "/test1" || url.pathname === "/test1/") {
+    return new Response(null, {
+      status: 308,
+      headers: {
+        Location: "/test2",
+      },
+    });
+  }
+
   if (url.pathname === "/appliances") {
     const html = `
       <html>
