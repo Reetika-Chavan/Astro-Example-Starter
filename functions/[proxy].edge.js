@@ -1,64 +1,16 @@
-export default async function handler(request, context) {
-  const url = new URL(request.url);
+export default function handler(request, context) {
+  const parsedUrl = new URL(request.url);
+  const route = parsedUrl.pathname;
 
-  // Edge redirect: test1 → test2 (308 permanent)
-  if (url.pathname === "/test1" || url.pathname === "/test1/") {
-    return new Response(null, {
-      status: 308,
-      headers: {
-        Location: "/test2",
-      },
-    });
-  }
-
-  if (url.pathname === "/appliances") {
-    const html = `
-      <html>
-        <head>
-          <title>Edge Function Demo</title>
-          <style>
-            body {
-              font-family: system-ui, sans-serif;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              padding: 2rem;
-              background: #f0f8ff;
-            }
-            .card {
-              background: white;
-              padding: 2rem;
-              border-radius: 12px;
-              box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-              text-align: center;
-              max-width: 400px;
-            }
-            h1 {
-              color: #1e40af;
-            }
-            p {
-              font-size: 1.1rem;
-              margin-top: 1rem;
-            }
-          </style>
-        </head>
-        <body>
-          <div class="card">
-            <h1>🏭 Edge Function Executed!</h1>
-            <p>Time: ${new Date().toLocaleString()}</p>
-          </div>
-        </body>
-      </html>
-    `;
-
-    return new Response(html, {
-      headers: {
-        "Content-Type": "text/html",
-        "Cache-Control": "no-store",
-      },
+  if (route === '/appliances') {
+    const response = {
+      time: new Date()
+    };
+    return new Response(JSON.stringify(response), {
+      headers: { 'Content-Type': 'application/json' }
     });
   }
 
   return fetch(request);
-}
+} 
+
